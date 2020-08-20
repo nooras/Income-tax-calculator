@@ -1,0 +1,70 @@
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <form method="POST" action="{% url 'tax_view' %}" class="card-body col-md-6 offset-md-3">
+                {% csrf_token %}
+                
+                <h3>Income Tax Calculator</h3>
+    
+                <div>
+                    <div class="md-form mb-3">
+                        <input type="text" id="income" name="income" class="form-control" value="{%if income%}{{income}}{%endif%}"
+                        placeholder="income">
+                    </div>
+    
+                    <div class="md-form mb-3">
+                        <input type="text" id="age" name="age" class="form-control" value="{%if age%}{{age}}{%endif%}"
+                        placeholder="age">
+                    </div>
+                    <div class="md-form mb-3">
+                        <input type="text" id="investment_amount" name="investment_amount" class="form-control" value="{%if investment_amount%}{{investment_amount}}{%endif%}"
+                        placeholder="investment_amount">
+                    </div>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Calculate</button>
+                </div>
+            </form>
+            <div class="card-body col-md-6 offset-md-3">
+                {%if messages%}
+                {% for message in messages %}
+    
+                <div class="alert alert-success alert-dismissable" role="alert">
+    
+                    <button type="button" class="close" data-dismiss="alert" aria-label ="close">
+    
+                        <span aria-hidden="true">&times;</span>
+    
+                    </button>
+                    {{message}}
+            
+                </div>
+    
+                {%endfor%}
+                {%endif%}
+                {% if income %}
+                <h4>Income : {{income}} </h4>
+                {% endif %}
+                {% if tax >= 0 %}
+                <h4>Tax : {{tax}} </h4>
+                {% endif %}
+                {% if investment_amount %}
+                <h4>Investment Amount : {{investment_amount}} </h4>
+                {% endif %}
+                {% if health_edu %}
+                <h4>Health and Education cess : {{health_edu}} </h4>
+                {% endif %}
+                {% if net_income %}
+                <h4>Net income : {{net_income}} </h4>
+                {% endif %}  
+            </div>  
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+</html>

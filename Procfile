@@ -1,0 +1,1 @@
+web: gunicorn Tax_cal.wsgi --log-file -

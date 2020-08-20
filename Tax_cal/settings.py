@@ -134,7 +134,7 @@ STATICFILES_DIRS = (
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-ALLOWED_HOSTS = ['incometaxxcalculator.herokuapp.com']
+ALLOWED_HOSTS = ['localhost','incometaxxcalculator.herokuapp.com']
 
 import dj_database_url 
 prod_db  =  dj_database_url.config(conn_max_age=500)

@@ -134,7 +134,7 @@ STATICFILES_DIRS = (
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-ALLOWED_HOSTS = ['tax.calc.com']
+ALLOWED_HOSTS = ['Tax_cal.calc.com']
 
 import dj_database_url 
 prod_db  =  dj_database_url.config(conn_max_age=500)
